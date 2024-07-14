@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ffefba, #ffffff);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .display-4 {
+            animation: slideIn 2s;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .loading-spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .decorations {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="container text-center">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center"> <b>--सुस्वागतम माझ्या प्रिये--</b></h3>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">चल सोबत </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">Website is designed by Sachin S</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === 'kavitahire02@gmail.com' && password === 'Kavita2024') {
+                document.getElementById('content').innerHTML = `
+                    <div class="text-center mt-5">
+                        <div class="loading-spinner"></div>
+                        <h1><b>येतेय ना ?</b></h1>
+                    </div>
+                `;
+                setTimeout(() => {
+                    document.getElementById('content').innerHTML = `
+                        <div class="container text-center mt-5">
+                            <div class="decorations">🎉🌸💖🎂🎈</div>
+                            <h1 class="display-4"><b>माझ्या जीवनातील खास व्यक्तीला वाढदिवसाच्या प्रेमळ शुभेच्छा! तुझ्या आयुष्यात आनंद, यश, आणि प्रेमाची फुलं फुलोत, </br>माझी प्रिय कविता !</b></h1>
+                            <p class="lead">Wishing you all the best on your special day!</p>
+                            <button onclick="goBack()" class="btn btn-secondary">Back to Home</button>
+                            <button onclick="exitSite()" class="btn btn-danger">Exit</button>
+                            <div class="decorations">🎉🌸💖🎂🎈</div>
+                        </div>
+                    `;
+                }, 5000);
+            } else {
+                alert('Invalid login credentials!');
+            }
+        });
+
+        function goBack() {
+            window.location.reload();
+        }
+
+        function exitSite() {
+            window.close();
+        }
+    </script>
+</body>
+</html>
